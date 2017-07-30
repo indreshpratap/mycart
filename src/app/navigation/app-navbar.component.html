@@ -15,21 +15,21 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
-        <li routerLinkActive="active"><a routerLink="products">Products</a></li>
-        <li routerLinkActive="active"><a routerLink="cart">Your Cart</a></li>
+        <li routerLinkActive="active"><a routerLink="/user/products">Products</a></li>
+        <li routerLinkActive="active"><a routerLink="/user/cart">Your Cart</a></li>
         <li routerLinkActive="active"><a routerLink="aboutus">About Us</a></li>
        
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+        <li class="dropdown" *ngIf="isAdmin">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Section <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a routerLink="admin-product-list">Product List</a></li>
-            <li><a routerLink="admin-product-reg">Product Registration</a></li>
+            <li><a routerLink="/admin/admin-product-list">Product List</a></li>
+            <li><a routerLink="/admin/admin-product-reg">Product Registration</a></li>
           </ul>
         </li>
-        <li><a href="#">Logout</a></li>
+        <li><a (click)="doLogout()" href="#">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

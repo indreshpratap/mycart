@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
-import {CommonModule} from "@angular/common";
+import { CommonModule } from "@angular/common";
 import { AdminProdListComponent } from "app/admin/product/product-list.component";
 import { AdminProdRegComponent } from "app/admin/product/product-reg.component";
 import { ProductService } from "app/admin/product/product.service";
 
-const routes: Routes = [
+export const adminRoutes: Routes = [
     { path: 'admin-product-list', component: AdminProdListComponent },
     { path: 'admin-product-reg', component: AdminProdRegComponent },
 ];
 
+// export const adminRouting: ModuleWithProviders = RouterModule.forChild(routes);
+
 @NgModule({
     imports: [
-        RouterModule.forChild(routes),
+        // adminRouting,
         CommonModule,
         HttpModule,
-        FormsModule,ReactiveFormsModule
+        FormsModule, ReactiveFormsModule
     ],
     exports: [],
     declarations: [AdminProdListComponent, AdminProdRegComponent],

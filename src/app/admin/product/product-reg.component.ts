@@ -7,9 +7,11 @@ import { ProductService } from "app/admin/product/product.service";
 })
 
 export class AdminProdRegComponent implements OnInit {
-    constructor(private productService: ProductService) { }
 
     alert: any;
+    
+    constructor(private productService: ProductService) { }
+    
     ngOnInit() { }
 
     saveProduct(form: any) {

@@ -10,4 +10,8 @@ export class ProductService {
     saveProduct(product:any) {
         return this.http.post(environment.apiPath+'/admin/save-product',product);
     }
+
+    getAllProducts() {
+        return this.http.get(`${environment.apiPath}/admin/get-products`);
+    }
 }

@@ -4,26 +4,44 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AdminModule } from "app/admin/admin.module";
+import { AdminModule,adminRoutes } from "./admin/admin.module";
 import { Routes, RouterModule } from "@angular/router";
-import { AppNavbarComponent } from "app/navigation/app.navbar.component";
+import { AppNavbarComponent } from "./navigation/app.navbar.component";
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home.component';
+import { SecurityGuard } from "./login/security.gaurd";
 
-const parentRoutes:Routes = [];
+import { userRoutes, UserModule } from "./user/user.module";
+import { SecurityService } from "./login/security.service";
+
+const parentRoutes: Routes = [
+  {
+    path: "", component: HomeComponent, canActivate: [SecurityGuard],
+    children: [
+      { path: "user", children: [...userRoutes] },
+      { path: "admin", children: [...adminRoutes] }
+    ]
+  },
+  { path: "login", component: LoginComponent }
+];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppNavbarComponent
+    AppNavbarComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AdminModule,
+    UserModule,
     RouterModule.forRoot(parentRoutes)
   ],
-  providers: [],
+  providers: [SecurityGuard, SecurityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
