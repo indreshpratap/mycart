@@ -8,10 +8,14 @@ export class ProductService {
     constructor(private http:Http) { }
 
     saveProduct(product:any) {
-        return this.http.post(environment.apiPath+'/admin/save-product',product);
+        return this.http.post(environment.apiPath+'admin/save-product',product);
     }
 
     getAllProducts() {
-        return this.http.get(`${environment.apiPath}/admin/get-products`);
+        return this.http.get(`${environment.apiPath}admin/get-products`);
+    }
+
+    getProductById(id) {
+        return this.http.get(`${environment.apiPath}admin/get-product-by-id/${id}`);
     }
 }

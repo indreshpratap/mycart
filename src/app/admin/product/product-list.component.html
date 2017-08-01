@@ -7,6 +7,7 @@
             <td>{{product.price}}</td>
             <td>{{product.category}}</td>
             <td>{{product.qty}}</td>
+            <td><a [routerLink]="['../admin-product-edit',product.id]">edit</a></td>
         </tr>
     </tbody>
 </table>
